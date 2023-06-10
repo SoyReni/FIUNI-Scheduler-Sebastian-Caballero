@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MyHeader from './components/MyHeader';
-import MyBody from './components/MyBody';
-import MyNavBar from './components/MyNavBar';
+import { StyleSheet } from 'react-native';
+import DashBoard from './src/pages/Dashboard';
+import Logo from './src/components/Logo';
+import NewEvent from './src/pages/NewEvent';
+import ListEvents from './src/pages/ListEvents';
+
+const Tab = createBottomTabNavigator()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      
-      <MyHeader></MyHeader>
-      <MyBody></MyBody>
-      <MyNavBar></MyNavBar>
-      <StatusBar style="auto" />
-
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen
+          name="List"
+          component={ListEvents}
+          options={{
+            headerTitle: (props) => <Logo {...props}/>
+          }}
+        />
+        <Tab.Screen
+          name="Dashboard"
+          component={DashBoard}
+          options={{headerTitle: (props) => <Logo {...props}/>}}
+        />
+        <Tab.Screen
+          name="NewEvent"
+          component={NewEvent}
+          options={{headerTitle: (props) => <Logo {...props}/>}}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
