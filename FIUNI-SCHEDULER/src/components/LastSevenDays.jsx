@@ -1,6 +1,7 @@
 import React from "react";
 import { FlatList } from "react-native";
 import { SDashCardContainer, SDashCardContent, SDashCardTitle, STitleText } from "./styles/StyledDashBoard";
+import AppContext from "../context/AppContext";
 
 const LastSevenDays = () => {
     
