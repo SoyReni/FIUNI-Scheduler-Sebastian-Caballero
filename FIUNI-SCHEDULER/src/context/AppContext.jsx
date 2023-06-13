@@ -1,9 +1,15 @@
 import React from 'react';
+import { DummyData } from '../../data/DummyData';
 
 export default React.createContext({
-  tasks: [],
+  tasks: DummyData,
+  searchType: "date",
   nextSevenDays: [],
   pending: [],
-  addNewTask : (task) => {},
-  deleteTask : (taskId) => {}
+  search: [],
+  addNewTask  : (task) => {},
+  deleteTask  : (taskId) => {},
+  editTask    : (task, id) =>{},
+  searchTask  : (date, name) => {},
+  resetSearch : () => {}
 });
