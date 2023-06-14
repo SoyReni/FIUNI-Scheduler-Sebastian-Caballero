@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { FlatList } from "react-native";
-import { SDashCardContainer, SDashCardContent, SDashCardTitle, STitleText } from "./styles/StyledDashBoard";
+import { SDashCardContainer, SDashCardContent, SDashCardTitle, STitleText, SVerTodos } from "./styles/StyledDashBoard";
 import AppContext from "../context/AppContext";
 import DashBoardListItem from "./DashBoardListItem";
 
@@ -14,13 +13,14 @@ export default class TasksList extends Component {
                 <SDashCardTitle>
                     <STitleText>En los próximos 7 dias</STitleText>
                 </SDashCardTitle>
-                <SDashCardContent>
-                    <FlatList
-                        data={this.context.nextSevenDays}
-                        renderItem={({item}) => <DashBoardListItem data={item} />}
-                        keyExtractor={item => item.id}
-                        />
+                <SDashCardContent
+                    scrollEnabled={true}
+                >
+                    {this.context.nextSevenDays.map((item, index) => (
+                        (index <= 3) && <DashBoardListItem key={item.id} data={item} />
+                    ))}
                 </SDashCardContent>
+                <SVerTodos>Ver Todos...</SVerTodos>
             </SDashCardContainer>
         )
     }

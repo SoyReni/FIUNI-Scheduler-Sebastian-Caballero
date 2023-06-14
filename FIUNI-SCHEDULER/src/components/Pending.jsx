@@ -1,18 +1,27 @@
-import React from "react";
-import { SDashCardContainer, SDashCardContent, SDashCardTitle, STitleText } from "./styles/StyledDashBoard";
-import { Text } from "react-native";
+import React, {Component} from "react";
+import { SDashCardContainer, SDashCardContent, SDashCardTitle, STitleText, SVerTodos } from "./styles/StyledDashBoard";
+import AppContext from "../context/AppContext";
+import DashBoardListItem from "./DashBoardListItem";
 
-const Pending = () => {
-    return(
-        <SDashCardContainer>
-            <SDashCardTitle>
-               <STitleText>Tareas Pendientes</STitleText>
-            </SDashCardTitle>
-            <SDashCardContent>
-                <Text>Hola</Text>
-            </SDashCardContent>
-        </SDashCardContainer>
-    )
+export default class Pending extends Component {
+  
+    static contextType = AppContext;
+    render(){
+
+        return (
+            <SDashCardContainer>
+                <SDashCardTitle>
+                <STitleText>Tareas Pendientes</STitleText>
+                </SDashCardTitle>
+                <SDashCardContent
+                        scrollEnabled={true}
+                    >
+                        {this.context.pending.map((item, index) => (
+                            (index <= 3) && <DashBoardListItem key={item.id} data={item} />
+                        ))}
+                    </SDashCardContent>
+                <SVerTodos>Ver Todos...</SVerTodos>
+            </SDashCardContainer>
+        )
+    }
 }
-
-export default Pending

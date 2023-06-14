@@ -2,16 +2,13 @@ import React from 'react';
 import AppContext from './AppContext';
 import { DummyData } from '../../data/DummyData';
 
-useEffect(() => {
-  this.setState({ nextSevenDays: this.state.tasks.filter(elem => Date.parse(elem.datetime) < new Date()), 
-                  pending: this.state.tasks.filter(elem => elem.status === "in_progress")});
-}, [this.state.tasks])
+
 export default class GlobalState extends React.Component{
 state = {
-  tasks: DummyData,
+  tasks: DummyData.sort((a,b) => Date.parse(a.datetime) - Date.parse(b.datetime)),
   searchType: "date",
-  nextSevenDays: DummyData,
-  pending: [], 
+  nextSevenDays: DummyData.filter(elem => (Date.parse(elem.datetime) > new Date() && elem.type === "reminder")).sort((a,b) => Date.parse(a.datetime) - Date.parse(b.datetime)),
+  pending: DummyData.filter(elem => elem.status === "in_progress" && elem.type === "task"), 
   search: [],
 }
  
@@ -49,7 +46,7 @@ searchTask = (date, name) => {
     list =  this.state.tasks.filter(elem => { (Date.parse(elem.datetime) === Date.parse(date)) && elem.name.includes(name)})
     this.setState({ searchType: "name" })
   } 
-  this.setState({ search: list})
+  this.setState({ search: list.sort((a,b) => Date.parse(a.datetime) - Date.parse(b.datetime))})
 }
 
 resetSearch = () => {
