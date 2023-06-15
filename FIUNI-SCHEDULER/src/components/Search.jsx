@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { SDashCardContainer, SDashCardContent, SDashCardTitle, SDateButton, SDateInputs, SDateSearch, SDateSelect, SDateText, SInput, SSubmit, STitleText } from "./styles/StyledDashBoard";
-import { Button, Text, View } from "react-native";
 import { Formik } from "formik";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { GetDateData } from "../services/DateManager";
-import AppContext from "../context/AppContext";
+import { ApplicationContext } from "../context/NewContext";
 
 export default function Search() {
-    const context = AppContext;
-
-    const handleSubmitForm = values => {
-        context.searchTask(values.name, values.date);
+    const {searchTask} = useContext(ApplicationContext)
+    const handleSubmitForm = (event) => {
+        searchTask(event.date, event.name)
     }
 
     return (
@@ -20,7 +18,7 @@ export default function Search() {
                     </SDashCardTitle>
                     <SDashCardContent>
                         <Formik 
-                            initialValues={{ name: '', date: false }}
+                            initialValues={{ name: '', date: "" }}
                             onSubmit={handleSubmitForm}>
                                 {({ handleSubmit, values, setFieldValue }) => (
                                     <MyForm values={values} setFieldValue={setFieldValue} handleSubmit={handleSubmit} />
@@ -46,7 +44,7 @@ const MyForm = props => {
         setFieldValue('date', new Date(date))
     }
     const handleChangeTitle = title => {
-        setFieldValue('name', title.value)
+        setFieldValue('name', title.nativeEvent.text)
     }
     
     return (
@@ -55,11 +53,14 @@ const MyForm = props => {
                 <SDateInputs>
                     <SInput
                         placeholder="Titulo del evento"
+                        placeholderTextColor={"#c3c3c3"}
                         onChange={handleChangeTitle}
                         value={values.name}
                     /><SDateSelect>
-                        <SDateButton onPress={openDatePicker}>Seleccionar Otra Fecha</SDateButton>
-                        <SDateText>{`${GetDateData(values.date).date}-${GetDateData(values.date).sMonth}-${GetDateData(values.date).year}`}</SDateText>
+                        <SDateText isSelected={values.date} onPress={openDatePicker}>{values.date ? 
+                        `${GetDateData(values.date).date}/${GetDateData(values.date).sMonth}/${GetDateData(values.date).year}`
+                        : `mm/dd/aaa`
+                        }</SDateText>
                     </SDateSelect>
                 </SDateInputs>
                 <SSubmit onPress={handleSubmit}>Buscar eventos</SSubmit>

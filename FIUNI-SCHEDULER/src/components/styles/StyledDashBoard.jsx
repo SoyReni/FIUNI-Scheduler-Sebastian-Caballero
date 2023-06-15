@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Pressable, ScrollView, TextInput, Button } from "react-native";
+import { View, Text, Pressable, ScrollView, TextInput } from "react-native";
 import { styled } from "styled-components/native";
 
 const handleColor = (type) => {
@@ -22,6 +22,11 @@ const handleType = (type, border) => {
             if (border) return "0 8px 8px 0;"
             return "75%;"
     }
+}
+
+const getSelected = (isSelected) => {
+    if(isSelected === "") return '#c3c3c3;'
+    return '#000000;'
 }
 
 const SDashCardContainer = styled(Pressable)`
@@ -87,6 +92,7 @@ const SVerTodos = styled(Text)`
 const SInput = styled(TextInput)`
     border-color: #f1f1f1;
     border-style: solid;
+    text-align: center;
     border-width: 1px;
     border-radius: 15px;
     padding: 5px 10px;
@@ -100,14 +106,16 @@ const SDateSelect = styled(View)`
     gap: 10px;
 `
 const SDateText = styled(Text)`
-    width: 50%;
+    width: 100%;
     padding: 2%;
     font-size: 16px;
     margin: 0 auto;
+    text-align: center;
     border-color: #f1f1f1;
     border-style: solid;
     border-width: 1px;
     border-radius: 15px;
+    color: ${({isSelected}) => getSelected(isSelected)}
 `
 const SDateButton = styled(Text)`
     width: 50%;

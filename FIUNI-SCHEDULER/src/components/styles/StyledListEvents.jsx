@@ -77,9 +77,45 @@ const SITemCheckd = styled(BouncyCheckbox)`
     right: 0px;
 
 `
+const SEventTitleCont = styled(View)`
+    background: ${({type}) => getColor(type, "event")}
+    border-radius: 10px;
+`
+const SEventTitle = styled(Text)`
+    color: #ffffff;
+    margin: 3% auto;
+    font-weight: 600;
+    font-size: 18px;
+`
+const SEventDateCont = styled(View)`
+    background: ${({type}) => getColor(type, "date")}
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    justify-content: center;
+`
+
+const SEventDateDisplay = styled(Text)`
+    color: #3D3D3D;
+    font-weight: 600;
+`
+const SEventDescDisplay = styled(Text)`
+    background: #ffffff;
+    padding: 15px;
+    font-size: 16px;
+    max-height: 250px;
+    height: 250px;
+    border-radius: 0 0 10px 10px;
+`
 
 
-export {SITemCheckd,
+export {
+        SEventDescDisplay,
+        SEventDateDisplay,
+        SEventDateCont,
+        SEventTitleCont,
+        SEventTitle,
+        SITemCheckd,
         SItemMore,
         SItemDescription,
         SItemDate,

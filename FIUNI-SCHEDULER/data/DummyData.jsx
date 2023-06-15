@@ -21,21 +21,21 @@ const DummyData = [
     {   id : 2,
         title : 'Feria',
         description: "Feria de Ingenieria, preparar notebook",
-        datetime: "2023-07-06 00:00:00.000", 
+        datetime: "2023-06-16 00:00:00.000", 
         type: "reminder",
         status: "in_progress"
     },
     {   id : 3,
         title : 'Hacer copias',
         description: "Hacer copias del libro",
-        datetime: "2023-05-10 00:00:00.000", 
+        datetime: "2023-06-17 00:00:00.000", 
         type: "task",
         status: "in_progress"
     },
     {   id : 4,
         title : 'Examen de Derecho',
         description: "Examen de Derecho, unidad I, II y III",
-        datetime: "2023-07-15 00:00:00.000", 
+        datetime: "2023-06-18 00:00:00.000", 
         type: "reminder",
         status: "in_progress"
     },
@@ -49,7 +49,7 @@ const DummyData = [
     {   id : 6,
         title : 'Pasear el perro',
         description: "Pasear el perro en la costanera",
-        datetime: "2023-07-28 00:00:00.000", 
+        datetime: "2023-06-16 00:00:00.000", 
         type: "reminder",
         status: "done"
     },

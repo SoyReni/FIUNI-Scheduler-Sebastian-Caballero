@@ -125,7 +125,8 @@ const GetDateData = (date) => {
         sMonth: sMonth,
         year: year,
         date: monthDay,
-        niceDate: `${monthDay}-${sMonth}-${year}`
+        niceDate: `${monthDay}-${sMonth}-${year}`,
+        longDate: `${monthDay}-${sMonth}-${year}`
     }
 }
 

@@ -1,38 +1,28 @@
-import React, { useContext, useEffect, useReducer, useState } from "react";
-import {Text} from "react-native";
-import { AppContext } from "../context/AppState";
+import React, { useContext } from "react";
+import { TouchableOpacity} from "react-native";
 import { SItemPicker, SItemTypeSelectorContainer } from "../components/styles/StyledListEvents";
 import { SDashCardContent, Separator } from "../components/styles/StyledDashBoard";
 import { radioButtons } from "../../data/UseFullData";
-import RadioGroup from 'react-native-radio-buttons-group';
-import { reducer } from "../context/AppReducer";
 import TaskShow from "../components/TaskShow";
+import { ApplicationContext } from "../context/NewContext";
 
-const TasksList = () => {
-  const [state, dispatch] = useReducer(reducer, useContext(AppContext))
-  const [selectedId, setSelectedId] = useState("activity");
-  useEffect(() => {
-    dispatch({
-      type: "setFilteredList",
-      data: {
-        type: selectedId,
-      }
-    })
-  }, [selectedId])
+const TasksList = ({navigation}) => {
+  const {filteredList, setSelectedType, selectedType} = useContext(ApplicationContext);
   
-    
     return (
       <SDashCardContent>
         <SItemTypeSelectorContainer>
           <SItemPicker
             radioButtons={radioButtons} 
-            onPress={setSelectedId}
-            selectedId={selectedId}
+            onPress={setSelectedType}
+            selectedId={selectedType}
             layout="row"
           />
         </SItemTypeSelectorContainer>
-        {state.filteredList.map((item, index) => (
-          <TaskShow key={index} data={item}></TaskShow>
+        {filteredList.map((item, index) => (
+          <TouchableOpacity key={index} onPress={() => navigation.navigate('EventView', { item })}>
+            <TaskShow  key={index} data={item}></TaskShow>
+          </TouchableOpacity>
         ))}
         <Separator/>
       </SDashCardContent>

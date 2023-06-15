@@ -5,20 +5,15 @@ import { GetDateData } from "../services/DateManager";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { reducer } from "../context/AppReducer";
 import { AppContext } from "../context/AppState";
+import { ApplicationContext } from "../context/NewContext";
 
 const TaskShow = ({data}) => {
-    const [state, dispatch] = useReducer(reducer, useContext(AppContext))
+    const {editTask} = useContext(ApplicationContext);
+    
     const updateStatus=()=>{
-        let myData = data;
         let newStatus = data.status === "done" ? "in_progress" : "done"
-        dispatch({
-            type: "editTask",
-            taskId: data.id,
-            data: {
-                ...myData,
-                status: newStatus,
-            }
-        })
+        let myData = {...data, status: newStatus};
+        editTask(data.id, myData)
     }
     const date = GetDateData(data.datetime) ?? null;
     const isTask = data.type === "task";

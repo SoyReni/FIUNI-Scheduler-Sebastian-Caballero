@@ -7,53 +7,57 @@ import Logo from './src/components/Logo';
 import NewEvent from './src/pages/NewEvent';
 import ListEvents from './src/pages/ListEvents';
 import { Ionicons } from 'expo-vector-icons';
+import { StateProvider } from './src/context/AppState';
+import { ApplicationContextProvider } from './src/context/NewContext';
 
 const Tab = createBottomTabNavigator()
 
-export default function App() {
+const App = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Todas"
-          component={ListEvents}
-          options={{
+    <ApplicationContextProvider>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen
+            name="Todas"
+            component={ListEvents}
+            options={{
               headerTitle: (props) => <Logo {...props}/>,
               tabBarActiveTintColor: "#DB352F",
               tabBarIcon: (tabinfo) => <Ionicons
-                name="ios-list"
-                size={35}
-                color= {tabinfo.focused ? "#DB352F" : "#8e8e93"}
+              name="ios-list"
+              size={35}
+              color= {tabinfo.focused ? "#DB352F" : "#8e8e93"}
               />
               
-          }}
-        />
-        <Tab.Screen
-          name="Dashboard"
-          component={DashBoard}
-          options={{
-            headerTitle: (props) => <Logo {...props}/>,
-            tabBarActiveTintColor: "#DB352F",
-            tabBarIcon: (tabinfo) => <Ionicons
+            }}
+            />
+          <Tab.Screen
+            name="Dashboard"
+            component={DashBoard}
+            options={{
+              headerTitle: (props) => <Logo {...props}/>,
+              tabBarActiveTintColor: "#DB352F",
+              tabBarIcon: (tabinfo) => <Ionicons
               name="md-home"
               size={35}
               color= {tabinfo.focused ? "#DB352F" : "#8e8e93"}
+              />
+            }}
             />
-          }}
-        />
-        <Tab.Screen
-          name="NewEvent"
-          component={NewEvent}
-          options={{headerTitle: (props) => <Logo {...props}/>,
+          <Tab.Screen
+            name="NewEvent"
+            component={NewEvent}
+            options={{headerTitle: (props) => <Logo {...props}/>,
             tabBarActiveTintColor: "#DB352F",
             tabBarIcon: (tabinfo) => <Ionicons
-              name="md-add"
-              size={35}
-              color= {tabinfo.focused ? "#DB352F" : "#8e8e93"}
-          />}}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+            name="md-add"
+            size={35}
+            color= {tabinfo.focused ? "#DB352F" : "#8e8e93"}
+            />}}
+            />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </ApplicationContextProvider>
   );
 }
 
@@ -65,3 +69,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   }
 });
+
+export default App;
