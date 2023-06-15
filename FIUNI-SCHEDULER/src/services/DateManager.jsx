@@ -107,6 +107,7 @@ const GetDateData = (date) => {
     if(date) newDate = new Date(date)
     
     let monthStrings = getMonthString(newDate.getMonth())
+    let monthNumber = newDate.getMonth()+1
     let month = monthStrings.month;
     let sMonth = monthStrings.sMonth;
     let dayString = getDayString(newDate.getDay())
@@ -120,9 +121,11 @@ const GetDateData = (date) => {
         day: day,
         sDay: sDay,
         month: month,
+        monthNumber: monthNumber,
         sMonth: sMonth,
         year: year,
         date: monthDay,
+        niceDate: `${monthDay}-${sMonth}-${year}`
     }
 }
 

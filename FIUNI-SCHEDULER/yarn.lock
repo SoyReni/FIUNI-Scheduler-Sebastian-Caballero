@@ -4329,6 +4329,13 @@ expo-status-bar@~1.4.4:
   resolved "https://registry.npmjs.org/expo-status-bar/-/expo-status-bar-1.4.4.tgz"
   integrity sha512-5DV0hIEWgatSC3UgQuAZBoQeaS9CqeWRZ3vzBR9R/+IUD87Adbi4FGhU10nymRqFXOizGsureButGZIXPs7zEA==
 
+expo-vector-icons@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/expo-vector-icons/-/expo-vector-icons-10.0.1.tgz#1b0565961a58e8d3a4571cb76eec516fd7402562"
+  integrity sha512-71WogLm9icxguMFKNtKKhHBgAwJ4lLzh4iUh6YB35+yeCfR/vIHI+4K6RAxbJQ9tLtRdwyxD+UAU0wN7m44cAA==
+  dependencies:
+    lodash "^4.17.4"
+
 expo@~48.0.18:
   version "48.0.19"
   resolved "https://registry.npmjs.org/expo/-/expo-48.0.19.tgz"
@@ -7511,6 +7518,11 @@ react-is@^18.0.0:
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
+react-native-bouncy-checkbox@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-bouncy-checkbox/-/react-native-bouncy-checkbox-3.0.7.tgz#011aef92b4fbde2a1f223165626c56a9ffe637fb"
+  integrity sha512-776TgMGt9wTpOQA1TcvFjL5VUn6o945wFYf3Ztqva62/vT2o3JAezLiP7hYh2Svd+PewfWBYSPMs4jeaSoS8Sg==
+
 react-native-codegen@^0.71.5:
   version "0.71.5"
   resolved "https://registry.npmjs.org/react-native-codegen/-/react-native-codegen-0.71.5.tgz"
@@ -7546,6 +7558,11 @@ react-native-modal-datetime-picker@^15.0.1:
   integrity sha512-FmNFeGwYWH6TCUvAr8OX75tu0FSUDxeEOxCorq2PdeIqbRx9wt7y/5oKUCfbWBWM6y+gme4TzrA0xAtufHqgGg==
   dependencies:
     prop-types "^15.7.2"
+
+react-native-radio-buttons-group@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-radio-buttons-group/-/react-native-radio-buttons-group-3.0.2.tgz#9016a739819030cbf58a563b2487fac46a711f02"
+  integrity sha512-5Nszk4WJGO4MeL+/4TSQRGoQErZlAaj5zAb4tis5f2J+O1tGzCMRtIARqr0WlIKwsjzH6zmcgyr9Q2Vv5xMiPw==
 
 react-native-ratings@8.0.4:
   version "8.0.4"

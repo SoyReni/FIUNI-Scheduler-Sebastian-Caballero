@@ -138,4 +138,8 @@ const SDateInputs = styled(View)`
     width: 70%;
 `
 
-export {SDateInputs, SDateSearch, SSubmit, SDateButton, SDateText, SDateSelect, SInput, SVerTodos, SDahsItemInfoContainer, SDashItemInfo, SDashDate, SDashCardContainer, SDashCardTitle, SDashCardContent, STitleText, SDahsItem, SDahsItemDate}
+const Separator = styled(View)`
+    height: 40px;
+`
+
+export {Separator, SDateInputs, SDateSearch, SSubmit, SDateButton, SDateText, SDateSelect, SInput, SVerTodos, SDahsItemInfoContainer, SDashItemInfo, SDashDate, SDashCardContainer, SDashCardTitle, SDashCardContent, STitleText, SDahsItem, SDahsItemDate}

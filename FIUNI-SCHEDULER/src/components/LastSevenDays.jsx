@@ -1,27 +1,24 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import { SDashCardContainer, SDashCardContent, SDashCardTitle, STitleText, SVerTodos } from "./styles/StyledDashBoard";
-import AppContext from "../context/AppContext";
+import { AppContext } from "../context/AppState";
 import DashBoardListItem from "./DashBoardListItem";
 
-export default class TasksList extends Component {
-  
-    static contextType = AppContext;
-    render(){
+const TasksList = () => {
+    const context = useContext(AppContext);
 
-        return (
-            <SDashCardContainer>
-                <SDashCardTitle>
-                    <STitleText>En los próximos 7 dias</STitleText>
-                </SDashCardTitle>
-                <SDashCardContent
-                    scrollEnabled={true}
-                >
-                    {this.context.nextSevenDays.map((item, index) => (
-                        (index <= 3) && <DashBoardListItem key={item.id} data={item} />
-                    ))}
-                </SDashCardContent>
-                <SVerTodos>Ver Todos...</SVerTodos>
-            </SDashCardContainer>
-        )
-    }
-}
+    return (
+        <SDashCardContainer>
+            <SDashCardTitle>
+                <STitleText>En los próximos 7 dias</STitleText>
+            </SDashCardTitle>
+            <SDashCardContent scrollEnabled={true}>
+                {context.nextSevenDays.map((item, index) => (
+                    index <= 3 && <DashBoardListItem key={item.id} data={item} />
+                ))}
+            </SDashCardContent>
+            <SVerTodos>Ver Todos...</SVerTodos>
+        </SDashCardContainer>
+    );
+};
+
+export default TasksList;

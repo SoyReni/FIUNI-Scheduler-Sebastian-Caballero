@@ -3,6 +3,7 @@ import { ScrollView } from "react-native";
 import LastSevenDays from "../components/LastSevenDays";
 import Pending from "../components/Pending";
 import Search from "../components/Search";
+import { Separator } from "../components/styles/StyledDashBoard";
 
 const DashBoardScreen = () => {
     return (
@@ -10,6 +11,7 @@ const DashBoardScreen = () => {
             <LastSevenDays/>
             <Pending/>
             <Search/>
+            <Separator/>
         </ScrollView>
 
     )

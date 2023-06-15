@@ -6,7 +6,7 @@ import React from "react";
 const DummyData = [
     {   id : 0,
         title : 'Examen de Algoritmos',
-        description: "Examen de Algoritmos, unidad I, II y III",
+        description: "Examen de Algoritmos, unidad I, II y III, Examen de Algoritmos, unidad I, II y III, Examen de Algoritmos, unidad I, II y III, Examen de Algoritmos, unidad I, II y III",
         datetime: "2023-06-28 00:00:00.000", 
         type: "task",
         status: "in_progress"
@@ -72,7 +72,7 @@ const DummyData = [
         description: "Hacer copias del libro",
         datetime: "2023-05-10 00:00:00.000", 
         type: "task",
-        status: "in_progress"
+        status: "done"
     },
     {   id : 10,
         title : 'Examen de Ingenieria',
@@ -88,8 +88,15 @@ const DummyData = [
         type: "activity",
         status: "done"
     },
+    {   id : 12,
+        title : 'Ir al teatro',
+        description: "Bob esponja, ",
+        datetime: "2023-06-15 00:00:00.000", 
+        type: "reminder",
+        status: "done"
+    },
 ]
 
-const LastIndex = 11;
+const LastIndex = 12;
 
 export {DummyData, LastIndex}

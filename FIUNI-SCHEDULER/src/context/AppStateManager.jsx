@@ -10,16 +10,27 @@ state = {
   nextSevenDays: DummyData.filter(elem => (Date.parse(elem.datetime) > new Date() && elem.type === "reminder")).sort((a,b) => Date.parse(a.datetime) - Date.parse(b.datetime)),
   pending: DummyData.filter(elem => elem.status === "in_progress" && elem.type === "task"), 
   search: [],
+  filteredList: DummyData.filter(elem => { elem.type === "activity" } ),
 }
  
 addNewTask = (task) => {
   const list = [...this.state.tasks, task];
-  this.setState({tasks: list});
+  this.setState({
+    tasks: list,
+    nextSevenDays: list.filter(elem => (Date.parse(elem.datetime) > new Date() && elem.type === "reminder")).sort((a,b) => Date.parse(a.datetime) - Date.parse(b.datetime)),
+    pending: list.filter(elem => elem.status === "in_progress" && elem.type === "task"), 
+    filteredList: list.filter(elem => { elem.type === "activity" } ),
+  });
 };
  
 deleteTask = (taskId) => {
   const list = this.state.tasks.filter(elem => elem.id != taskId)
-  this.setState({tasks: list});
+  this.setState({
+    tasks: list,
+    nextSevenDays: list.filter(elem => (Date.parse(elem.datetime) > new Date() && elem.type === "reminder")).sort((a,b) => Date.parse(a.datetime) - Date.parse(b.datetime)),
+    pending: list.filter(elem => elem.status === "in_progress" && elem.type === "task"), 
+    filteredList: list.filter(elem =>  elem.type === "activity"  ),
+  });
 };
 
 editTask = (task, id) =>{
@@ -31,7 +42,12 @@ editTask = (task, id) =>{
       elem.type = task.type
       elem.status = task.status
     }})
-  this.setState({tasks: list})
+  this.setState({
+    tasks: list,
+    nextSevenDays: list.filter(elem => (Date.parse(elem.datetime) > new Date() && elem.type === "reminder")).sort((a,b) => Date.parse(a.datetime) - Date.parse(b.datetime)),
+    pending: list.filter(elem => elem.status === "in_progress" && elem.type === "task"), 
+    filteredList: list.filter(elem => { elem.type === "activity" } ),
+  })
 } 
 
 searchTask = (date, name) => {
@@ -53,6 +69,10 @@ resetSearch = () => {
   this.setState({ search: [] })
 }
 
+setFilteredList = (type) => {
+  this.setState({ filteredList: this.state.tasks.filter(elem =>  elem.type === type )})    
+}
+
 render(){
  return (
   <AppContext.Provider
@@ -62,10 +82,12 @@ render(){
     pending: this.state.pending,
     searchType: this.searchType,
     search: this.search,
+    filteredList: this.filteredList,
     addNewTask: this.addNewTask,
     deleteTask: this.deleteTask,
     searchTask: this.searchTask,
-    resetSearch: this.resetSearch
+    resetSearch: this.resetSearch,
+    setFilteredList: this.setFilteredList
    }}
   >
    {this.props.children}
